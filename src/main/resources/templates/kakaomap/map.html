@@ -11,7 +11,7 @@
 </p>
 <div id="map" style="width:100%;height:350px;"></div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 사용하세요"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5a1466565de1761e287a3fe2b3af2d9b"></script>
 <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
@@ -35,14 +35,15 @@
 
             // 마커와 인포윈도우를 표시합니다
             displayMarker(locPosition, message);
-
+            console.log(lat);
+            console.log(lon);
           });
 
     } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 
         var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),
             message = 'geolocation을 사용할수 없어요..'
-
+        console.log("사용불가능");
         displayMarker(locPosition, message);
     }
 

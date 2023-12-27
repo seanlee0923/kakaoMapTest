@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class KakaoMapViewController {
 	@RequestMapping("/")
 	public String toKakaoMap(){
+		return "kakaomap/defaultMap";
+	}
+	@RequestMapping("/search")
+	public String toSearchKakaoMap(){
 		return "kakaomap/map";
 	}
 }
