@@ -17,6 +17,4 @@ public class TestBuildingDTO {
 	private String address;
 	private double latitude;
 	private double longitude;
-	private double distance;
-
 }

@@ -27,9 +27,8 @@ public class TestBuilding {
 	private String address;
 	private double latitude;
 	private double longitude;
-	private double distance;
 
-	public TestBuilding from(TestBuildingDTO dto){
+	public static TestBuilding from(TestBuildingDTO dto){
 		return TestBuilding.builder()
 			.name(dto.getName())
 			.address(dto.getAddress())

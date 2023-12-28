@@ -4,5 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.kakaomap.kakaomaptest.kakaomap.entity.TestBuilding;
 
-public interface MyKakaoRepository extends JpaRepository<TestBuilding, Long> {
+public interface TestBuildingRepository extends JpaRepository<TestBuilding, Long> {
 }
