@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,7 +27,7 @@ public class KakaoMapListcontroller {
 	public String searchHospitals(double x, double y){
 		List<TestBuildingDTO> getByDistance = calcService.getByDistance(x, y);
 		log.info("{}",getByDistance);
-		return x+","+y;
+		return getByDistance.toString();
 	}
 
 	@PostMapping("/save-dummy")
