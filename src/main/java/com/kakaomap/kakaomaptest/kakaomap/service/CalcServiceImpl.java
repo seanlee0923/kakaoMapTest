@@ -1,6 +1,9 @@
 package com.kakaomap.kakaomaptest.kakaomap.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
 
@@ -15,9 +18,24 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CalcServiceImpl implements CalcService{
 	private final TestBuildingRepository testBuildingRepository;
+
 	@Override
 	public List<TestBuildingDTO> getByDistance(double latitude, double longitude) {
-		return null;
+		List<TestBuilding> buildings = testBuildingRepository.findAll();
+
+		List<TestBuilding> resultBuildings = buildings.stream().map(building -> {
+			if (calculateDistance(latitude, longitude, building.getLatitude(), building.getLongitude()) < 3) {
+				return building;
+			} else
+				return null;
+		}).collect(Collectors.toList());
+		List<TestBuildingDTO> nearBuilding = new ArrayList<>();
+		for(TestBuilding building : resultBuildings){
+			if(building!=null){
+				nearBuilding.add(building.toTestBuildingDTO());
+			}
+		}
+		return nearBuilding;
 	}
 
 	@Override

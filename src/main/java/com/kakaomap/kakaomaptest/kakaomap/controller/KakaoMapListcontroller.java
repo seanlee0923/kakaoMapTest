@@ -11,16 +11,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kakaomap.kakaomaptest.kakaomap.dto.TestBuildingDTO;
 import com.kakaomap.kakaomaptest.kakaomap.service.CalcService;
+import com.sun.tools.jconsole.JConsoleContext;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
+@Slf4j
 public class KakaoMapListcontroller {
 	@Autowired
 	CalcService calcService;
 	@GetMapping("/nearByHospitals")
 	public String searchHospitals(double x, double y){
+		List<TestBuildingDTO> getByDistance = calcService.getByDistance(x, y);
+		log.info("{}",getByDistance);
 		return x+","+y;
 	}
 

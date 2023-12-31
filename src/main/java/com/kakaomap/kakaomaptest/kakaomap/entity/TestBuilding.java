@@ -36,4 +36,11 @@ public class TestBuilding {
 			.latitude(dto.getLatitude())
 			.build();
 	}
+	public TestBuildingDTO toTestBuildingDTO(){
+		return TestBuildingDTO.builder()
+			.name(name)
+			.address(address)
+			.latitude(latitude)
+			.longitude(longitude).build();
+	}
 }
