@@ -43,6 +43,15 @@ public class CalcServiceImpl implements CalcService{
 		testBuildingRepository.save(TestBuilding.from(saveDto));
 	}
 
+	@Override
+	public List<TestBuildingDTO> getByKeyword(String keyword) {
+		List<TestBuilding> getByKeywordList = testBuildingRepository.findByNameContains(keyword);
+		List<TestBuildingDTO> resultResult = getByKeywordList.stream().map(t -> {
+			return t.toTestBuildingDTO();
+		}).toList();
+		return resultResult;
+	}
+
 	// 최단거리 구하기, 하버사인 공식(Haversine Formula)
 	private double calculateDistance(double lat1, double lon1, double lat2, double lon2) { // 현재lat, 현재lon, 계산할lat, 계산할lon
 		lat1 = Math.toRadians(lat1);
